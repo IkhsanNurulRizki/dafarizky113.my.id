@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,700");
+
 /*
  * Globals
  */
@@ -25,9 +27,12 @@ a:hover {
 
 html,
 body {
+  width: 100%;
   height: 100%;
+  font-family: "Poppins", sans-serif;
+  color: #222;
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url(assets/img/home-bg.png);
+    url(assets/img/cover-bg.jpg);
   height: 100vh;
   background-size: cover;
   background-position: center center;
@@ -78,15 +83,6 @@ body {
   border-bottom-color: #fff;
 }
 
-@media (min-width: 48em) {
-  .masthead-brand {
-    float: left;
-  }
-  .nav-masthead {
-    float: right;
-  }
-}
-
 /*
  * Cover
  */
@@ -103,4 +99,50 @@ body {
  */
 .mastfoot {
   color: rgba(255, 255, 255, 0.5);
+}
+
+/*---Media Queries --*/
+@media (min-width: 48em) {
+  .masthead-brand {
+    float: left;
+  }
+  .nav-masthead {
+    float: right;
+  }
+}
+@media (max-width: 768px) {
+  .masthead-brand {
+    font-size: 160%;
+  }
+
+  .cover-heading {
+    font-size: 200%;
+  }
+
+  .lead {
+    font-size: 120%;
+  }
+
+  .btn {
+    font-size: 95%;
+    padding: 8px 14px;
+  }
+}
+@media (max-width: 576px) {
+  .masthead-brand {
+    font-size: 140%;
+  }
+
+  .cover-heading {
+    font-size: 180%;
+  }
+
+  .lead {
+    font-size: 120%;
+  }
+
+  .btn {
+    font-size: 85%;
+    padding: 4px 8px;
+  }
 }
