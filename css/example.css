@@ -65,7 +65,7 @@ body {
 .welcome {
   width: 75%;
   margin: 0 auto;
-  padding-top: 4rem;
+  padding-top: 2rem;
 }
 
 .welcome hr {
@@ -92,6 +92,15 @@ body {
 .fa-css3 {
   font-size: 4em;
   margin: 1rem;
+}
+
+.fun {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.gif {
+  max-width: 100%;
 }
 
 .social a {
@@ -242,8 +251,7 @@ figure {
   height: 100%;
 }
 #fixed {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("assets/img/fixed-bg.jpg");
+  background-image: url("../assets/img/mac.png");
   position: fixed;
   display: block;
   top: 0;
