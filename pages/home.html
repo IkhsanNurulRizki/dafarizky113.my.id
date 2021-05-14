@@ -13,47 +13,57 @@
 </head>
 
 <body>
-    <!--Navbar-->
-    <div class="page-header">
-        <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
-            <div class="container-fluid">
-                <a class="navbar-brand">AntafunnyCode</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="tugas.php">College Stuff</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="misc.html">Misc</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Soon!</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
-                        </li>
-                    </ul>
-                </div>
+    <!--Spinner-->
+    <div class="preloader">
+        <div class="loading">
+            <div class="sk-chase">
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
             </div>
-        </nav>
+        </div>
     </div>
 
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand">AntafunnyCode</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tugas.php">College Stuff</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="misc.html">Misc</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Soon!</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <!--Carousel-->
-    <div class="page-main">
-        <div class="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="../assets/img/jumbotron-bg.jpg" alt="">
-                    <div class="carousel-caption">
-                        <h1 class="display-2">Welcome!</h1>
-                        <h3>Now that you have chosen adventure, please enjoy your visit here. And don't forget! Please put your waste into trash bin!</h3>
-                    </div>
+    <div class="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="../assets/img/carousel-bg.jpg" alt="">
+                <div class="carousel-caption">
+                    <h1 class="display-2">Welcome!</h1>
+                    <h3>Now that you have chosen adventure, please enjoy your visit here. And don't forget! Please put your waste into trash bin!</h3>
                 </div>
             </div>
         </div>
@@ -120,7 +130,6 @@
 		    </div>
 		    <hr>
 	    </div>
-
     </div>
 
     <!--- Two Column Section -->
@@ -181,13 +190,19 @@
 	    </div>
     </footer>
 
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
     <script>
         AOS.init();
     </script>
-    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <script>
+        $(window).on("load", function(){
+            $(".preloader").fadeOut("slow");
+        });
+    </script>
 </body>
 
 </html>

@@ -9,6 +9,24 @@ body {
 }
 
 /*--Spinner--*/
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background-color: #2f658e;
+}
+
+.preloader .loading {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font: 14px arial;
+}
+
 .sk-chase {
   width: 40px;
   height: 40px;
@@ -99,31 +117,7 @@ body {
   transition: width 0.3s;
 }
 
-.loaded nav > * {
-  animation: fadeIn 1s ease-in 0.7s forwards, slideIn 0.8s ease-in 0.9s forwards;
-}
-
-nav::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--main-purple-color);
-  z-index: 99999;
-  transform: scaleX(0);
-}
-
-nav::after {
-  animation: scaleIn 1.3s ease-in 0.2s forwards;
-}
-
 /*--Carousel--*/
-.carousel {
-  animation: fadeIn 1s ease-in 0.7s forwards;
-}
-
 .carousel-inner img {
   width: 100%;
   height: 100%;
@@ -148,6 +142,7 @@ nav::after {
   padding-bottom: 1rem;
 }
 
+/*--Btn class--*/
 .btn-primary {
   background-color: #6648b1;
   border: 1px solid #6648b1;
@@ -158,10 +153,12 @@ nav::after {
   border: 1px solid #563d7c;
 }
 
+/*--Padding--*/
 .padding {
   padding-bottom: 2rem;
 }
 
+/*-- Welcome Section --*/
 .welcome {
   width: 75%;
   margin: 0 auto;
@@ -186,10 +183,12 @@ nav::after {
   margin: 0.8rem;
 }
 
+/*-- Meet the person --*/
 .learn {
   margin-bottom: 0.8rem;
 }
 
+/*-- Connect --*/
 .social a {
   font-size: 4.5em;
   padding: 3rem;
@@ -213,6 +212,7 @@ nav::after {
   color: #d5d5d5;
 }
 
+/*-- Footer --*/
 footer {
   background-color: #3f3f3f;
   color: #d5d5d5;
@@ -259,10 +259,6 @@ hr.light-100 {
     padding-bottom: 0.2rem;
   }
 
-  .carousel-caption btn {
-    font-size: 95%;
-    padding: 8px 14px;
-  }
   .display-4 {
     font-size: 200%;
   }
@@ -278,20 +274,11 @@ hr.light-100 {
   }
 
   .carousel-caption h1 {
-    font-size: 250%;
+    font-size: 180%;
   }
 
   .carousel-caption h3 {
-    font-size: 110%;
-  }
-
-  .carousel-caption btn {
     font-size: 90%;
-    padding: 4px 8px;
-  }
-
-  .carousel-indicators {
-    display: none;
   }
 
   .display-4 {
