@@ -32,7 +32,10 @@
     </div>
 
     <!--Navbar-->
-    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+    <nav
+      class="navbar navbar-expand-md navbar-light bg-light sticky-top"
+      id="topSection"
+    >
       <div class="container-fluid">
         <a class="navbar-brand">AntafunnyCode</a>
         <button
@@ -239,6 +242,15 @@
       </div>
     </div>
 
+    <!--Back to top-->
+    <button
+      type="button"
+      class="btn btn-floating btn-lg smooth-scroll"
+      id="btn-back-to-top"
+    >
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
     <!--- Footer -->
     <footer>
       <div class="container-fluid padding">
@@ -282,13 +294,8 @@
       integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
       crossorigin="anonymous"
     ></script>
-    <script>
-      AOS.init();
-    </script>
-    <script>
-      $(window).on("load", function () {
-        $(".preloader").fadeOut("slow");
-      });
-    </script>
+    <script type="text/javascript" src=".././js/aos_init.js"></script>
+    <script type="text/javascript" src=".././js/preloader.js"></script>
+    <script type="text/javascript" src=".././js/back_top.js"></script>
   </body>
 </html>
