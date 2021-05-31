@@ -8,7 +8,7 @@ body {
   color: #222;
 }
 
-/*-- Navbar --*/
+/*--Navbar--*/
 .navbar {
   padding: 0.8rem;
 }
@@ -33,31 +33,4 @@ body {
 .nav-link:hover::after {
   width: 100%;
   transition: width 0.3s;
-}
-
-/*-- Jumbotron --*/
-.jumbotron {
-  background-image: url(../assets/img/misc-jumbotron-bg.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 200px;
-}
-
-/*--Sign class--*/
-.sign {
-  width: 75%;
-  margin: 0 auto;
-  padding-top: 2rem;
-}
-
-.sign hr {
-  border-top: 2px solid #b4b4b4;
-  width: 95%;
-  margin-top: 0.3rem;
-  margin-bottom: 1rem;
-}
-
-/*--Padding--*/
-.padding {
-  padding-bottom: 2rem;
 }
