@@ -16,14 +16,14 @@
       $email = mysqli_real_escape_string($conn, $_POST['email']);
       $password1 = mysqli_real_escape_string($conn, $_POST['password_1']);
       $password2 = mysqli_real_escape_string($conn, $_POST['password_2']);
-      $password = password_hash($password, PASSWORD_BCRYPT);
+      $password = password_hash($password1, PASSWORD_BCRYPT);
       
       $sql = "SELECT * FROM akun WHERE email = '$email'";
       $execute = mysqli_query($conn, $sql);
         
       if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
           $errorMsg = "Email is not valid try again";
-      }else if ($execute) {
+      }else if ($execute->num_rows == 1) {
           $errorMsg = "This Email is already exists";
       }else if ($password1 != $password2) {
           $errorMsg = "Password does not match";
