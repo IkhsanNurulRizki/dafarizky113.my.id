@@ -22,8 +22,12 @@
                                                     <td><?php echo $row['NoKamar'] ?></td>
                                                     <td><?php echo $row['TipeKamar'] ?></td>
                                                     <td class="text-center">
-                                                      <button class="btn btn-sm btn-primary" data-toggle="modal">EDIT</button>
-                                                      <button class="btn btn-sm btn-danger" data-toggle="modal">HAPUS</button>
+                                                    <?php
+                                                        $kamar = $row['NoKamar'];
+                                                        $id = base64_url_encode($kamar);
+                                                    ?>
+                                                      <a href="home.php?edit=<?php echo $id?>"><button class="btn btn-sm btn-primary" data-toggle="modal">EDIT</button></a>
+                                                      <a href="home.php?delete=<?php echo $id?>"><button class="btn btn-sm btn-danger" data-toggle="modal">DELETE</button></a>
                                                     </td>
                                                 </tr>
                               

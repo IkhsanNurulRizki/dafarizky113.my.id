@@ -24,8 +24,12 @@
                                                     <td><?php echo $row['IdManajer'] ?></td>
                                                     <td><?php echo $row['NamaPegawai'] ?></td>
                                                     <td class="text-center">
-                                                      <button class="btn btn-sm btn-primary" data-toggle="modal">EDIT</button>
-                                                      <button class="btn btn-sm btn-danger" data-toggle="modal">HAPUS</button>
+                                                    <?php
+                                                        $idpegawai = $row['IdPegawai'];
+                                                        $id = base64_url_encode($idpegawai);
+                                                    ?>
+                                                      <a href="home.php?edit=<?php echo $id?>"><button class="btn btn-sm btn-primary" data-toggle="modal">EDIT</button></a>
+                                                      <a href="home.php?delete=<?php echo $id?>"><button class="btn btn-sm btn-danger" data-toggle="modal">DELETE</button></a>
                                                     </td>
                                                 </tr>
                               

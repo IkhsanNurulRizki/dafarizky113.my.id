@@ -7,7 +7,8 @@
     $username = "";
 
   if (isset($_SESSION['login'])) {
-      header("Location:./home.php");
+      header("Location:./home.php", true, 301);
+      exit();
   }
 
   if (isset($_POST['login_user'])) {

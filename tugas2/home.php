@@ -2,12 +2,21 @@
     session_start();
 
     include_once ('./controller/user.php');
+    include_once ('./controller/tamu.php');
+    include_once ('./controller/resepsionis.php');
+    include_once ('./controller/manajer.php');
+    include_once ('./controller/kamar.php');
     include ('./controller/secureUrl.php');
 
     $userObj = new User();
+    $tamuObj = new Tamu();
+    $respObj = new Resepsionis();
+    $manajerObj = new Manajer();
+    $kamarObj = new Kamar();
 
     if (!isset($_SESSION['login'])) {
-        header("Location:./index.php");
+        header("Location:./index.php", true, 301);
+        exit();
     }
 
     if (isset($_GET['logout'])){
@@ -23,6 +32,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Dashboard - Hotel Teyvat:ADMIN</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="./assets/styles/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
@@ -30,7 +40,7 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html">Hotel Teyvat</a>
+            <span class="navbar-brand ps-3">Hotel Teyvat</span>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -58,13 +68,15 @@
                             <div class="sb-sidenav-menu-heading">Interface</div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Tabel
+                                Table
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <?php $pengguna = base64_url_encode("Pengguna") ?>
                                     <a class="nav-link" href="home.php?t=<?php echo $pengguna?>">Pengguna</a>
+                                    <?php $tamu = base64_url_encode("Tamu") ?>
+                                    <a class="nav-link" href="home.php?t=<?php echo $tamu?>">Tamu</a>
                                     <?php $resepsionis = base64_url_encode("Resepsionis") ?>
                                     <a class="nav-link" href="home.php?t=<?php echo $resepsionis?>">Resepsionis</a>
                                     <?php $manajer = base64_url_encode("Manajer") ?>
@@ -84,24 +96,36 @@
             <div id="layoutSidenav_content">
                 <main>
                     <?php 
+                         
                         if (isset($_GET['t'])){
-                            $table = base64_url_decode($_GET['t']); ?>
+                            $table = base64_url_decode($_GET['t']);
+                            ?>
                     
                             <div class="container-fluid px-4">
                         <h1 class="mt-4">Data Tabel <?php echo $table?></h1>
-                        <ol class="breadcrumb mb-4">
+                        <ol class="breadcrumb mb-4" style="background-color: #fff;">
                             <li class="breadcrumb-item"><a href="home.php">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Tabel</li>
+                            <li class="breadcrumb-item active">Table</li>
                         </ol>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
                                 Tabel <?php echo $table?>
                             </div>
+                            <div class="row">
+                                <div class="col-10"></div>
+                                <div class="col-2">
+                                    <?php $id = base64_url_encode($table)?>
+                                    <a href="home.php?add=<?php echo $id?>"><button type="button" class="btn btn-sm btn-success btn-add"
+                                    name="add-<?php echo $table?>">Add Data</button></a>
+                                </div>
+                            </div>
                             <div class="card-body">
                                         <?php
                                                 if ($table == "Pengguna"){
                                                     include_once('content/user.php');
+                                                }else if ($table == "Tamu") {
+                                                    include_once('content/tamu.php');
                                                 }else if ($table == "Resepsionis"){
                                                     include_once('content/resepsionis.php');
                                                 }else if ($table == "Manajer"){
@@ -113,8 +137,61 @@
                             </div>
                         </div>
                     </div>
-                        <?php }else {
-                            include_once('./content/mainpage.php');
+                        <?php 
+                        }else if (isset($_GET['add'])){
+                            $id = base64_url_decode($_GET['add']);
+
+                            if ($id == "Pengguna"){
+                                include_once('content/add/user.php');
+                            }else if ($id == "Tamu"){
+                                include_once('content/add/tamu.php');
+                            }else if ($id == "Resepsionis"){
+                                include_once('content/add/resepsionis.php');
+                            }else if ($id == "Manajer"){
+                                include_once('content/add/manajer.php');
+                            }else if ($id == "Kamar"){
+                                include_once('content/add/kamar.php');
+                            }
+                        }else if (isset($_GET['edit'])){
+                            $id = base64_url_decode($_GET['edit']);
+
+                            $user = $userObj->getUser($id);
+                            $tamu = $tamuObj->getTamu($id);
+                            $resp = $respObj->getResp($id);
+                            $manajer = $manajerObj->getManajer($id);
+                            $kamar = $kamarObj->getKamar($id);
+                            if ($user->num_rows == 1){
+                                include_once('content/edit/user.php');
+                            }else if ($tamu->num_rows == 1){
+                                include_once('content/edit/tamu.php');
+                            }else if ($resp->num_rows == 1){
+                                include_once('content/edit/resepsionis.php');
+                            }else if ($manajer->num_rows == 1){
+                                include_once('content/edit/manajer.php');
+                            }else if ($kamar->num_rows == 1){
+                                include_once('content/edit/kamar.php');
+                            }
+                        }else if (isset($_GET['delete'])){
+                            $id = base64_url_decode($_GET['delete']);
+
+                            $user = $userObj->getUser($id);
+                            $tamu = $tamuObj->getTamu($id);
+                            $resp = $respObj->getResp($id);
+                            $manajer = $manajerObj->getManajer($id);
+                            $kamar = $kamarObj->getKamar($id);
+                            if ($user->num_rows == 1){
+                                include_once('content/delete/user.php');
+                            }else if ($tamu->num_rows == 1){
+                                include_once('content/delete/tamu.php');
+                            }else if ($resp->num_rows == 1){
+                                include_once('content/delete/resepsionis.php');
+                            }else if ($manajer->num_rows == 1){
+                                include_once('content/delete/manajer.php');
+                            }else if ($kamar->num_rows == 1){
+                                include_once('content/delete/kamar.php');
+                            }
+                        }else {
+                            include_once('content/mainpage.php');
                         }
                     ?>
                 </main>
@@ -132,6 +209,8 @@
                 </footer>
             </div>
         </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="./js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>

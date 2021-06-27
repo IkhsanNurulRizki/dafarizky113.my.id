@@ -15,7 +15,7 @@
                                             $userObj = new User();
                                             $result = $userObj->viewUser();
 
-                                            while($row = $result->fetch_array()){
+                                            while($row = $result->fetch_assoc()){
                                                 ?>
                               
                                                 <tr>
@@ -24,8 +24,12 @@
                                                     <td><?php echo $row['Email'] ?></td>
                                                     <td><?php echo $row['Password'] ?></td>
                                                     <td class="text-center">
-                                                      <button class="btn btn-sm btn-primary" data-toggle="modal">EDIT</button>
-                                                      <button class="btn btn-sm btn-danger" data-toggle="modal">HAPUS</button>
+                                                        <?php 
+                                                            $username = $row['Username'];
+                                                            $id = base64_url_encode($username);
+                                                        ?>
+                                                      <a href="home.php?edit=<?php echo $id?>"><button class="btn btn-sm btn-primary">EDIT</button></a>
+                                                      <a href="home.php?delete=<?php echo $id?>"><button class="btn btn-sm btn-danger">DELETE</button></a>
                                                     </td>
                                                 </tr>
                               
