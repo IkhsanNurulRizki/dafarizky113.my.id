@@ -379,8 +379,7 @@ figure {
   height: 100%;
 }
 #fixed {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("../assets/img/fixed-bg.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../assets/img/fixed-bg.jpg");
   position: fixed;
   display: block;
   top: 0;
